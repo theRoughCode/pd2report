@@ -112,26 +112,21 @@
 
     }
 
-    \newcommand{\waterlooletterofsubmittal}[9] {
+    \newcommand{\waterlooletterofsubmittal}[5] {
     \begin{waterlooletter}
-    #1 \\
-    #2 \\
-    #3 \\ \\
-    \today \\ \\
-    #4, PD2 Instructor \\
-    Professional Development Program \\
-    University of Waterloo \\
-    200 University Avenue West \\
-    Waterloo, Ontario \\
-    N2L 3G1 \\ \\
-    Dear #5: \\
-
-    #8
-
-    Sincerely, \\ \\
-    #9 \\
-    #6 \\
-    ID #7
+    \tocsection{Memorandum} {
+    To:       #1 \\
+    From:     #2 \\
+    Date:     \today\\
+    Re:       Work Report: #3\\
+    
+    \noindent\rule{14cm}{1.9pt}
+    
+    #4
+    
+    Sincerely,\\ \\
+    #5 
+    }
     \end{waterlooletter}
     }
 
