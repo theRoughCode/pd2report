@@ -7,12 +7,71 @@
 \usepackage{titletoc}
 \usepackage{sectsty}
 \usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage[hmargin=1.5in, vmargin=1.5in]{geometry}
 
+%%% Optional Math macros used in Raphael Koh's research %%%
+
+% Theorems
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section] % reset theorem numbering for each chapter
+\newtheorem{corr}[thm]{Corollary}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+
+% Definitions
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
+
+% Edit proof formatting (make bold)
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}\normalfont\topsep-6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep\bfseries#1\@addpunct{.}]\ignorespaces}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+% Decrease spacing between items in lists and before lists
+\setlist[enumerate]{noitemsep,topsep=0pt}
+
+% Math/Linear Algebra/Quantum Physics notation
+% math notation
+\newcommand{\La}{\mathcal{L}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\dash}{\text{-}}
+
+\newcommand{\ketbra}[2]{\ket{#1}\!\bra{#2}}        % outer product
+\newcommand{\density}[1]{\ketbra{#1}{#1}}          % density matrix of a pure state
+\newcommand{\Ket}[1]{\left|#1\right\rangle}        % big ket
+\newcommand{\Bra}[1]{\left\langle #1\right|}       % big bra
+
+\newcommand{\set}[1]{{\left\{#1\right\}}}          % braces for set notation
+\newcommand{\size}[1]{\left|#1\right|}             % cardinality
+
+\newcommand{\norm}[1]{\left\|\,#1\,\right\|}       % norm
+\newcommand{\trnorm}[1]{\norm{#1}_{\mathrm {tr}}}  % trace norm
+
+\newcommand{\trace}{{\rm Tr}}
+\newcommand{\transpose}{{\mathrm T}}
+
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\expct}{{\mathrm E}}
+
+\newcommand{\irow}[1]{% inline row vector
+  \begin{smallmatrix}(#1)\end{smallmatrix}%
+}
+
+%%% End of optional Math macros %%%
+
+
 % This is the styles files, you don't need to edit this whatsoever unless you
 % want to change the format of the report. As it is now, it conforms exactly
-% to the Spring 2013 PD2 Report Writing Guidelines
+% to the Spring 2019 Math Work Report Guidelines
 
 
 \sectionfont{\normalsize}
@@ -61,9 +120,10 @@
 
 \newcommand{\UwLocation}{Waterloo, Ontario}
 
-\newcommand{\supervisor}[3] {
+\newcommand{\supervisor}[4] {
 \newcommand{\supervisorAddress}{#1 #2 #3}
 \newcommand{\supervisorSalutation}{#1 #3}
+\newcommand{\supervisorLocation}{#4}
 }
 
 \newlength\mylen
@@ -135,6 +195,24 @@
     \end{waterlooletter}
     }
 
+    \newcommand{\waterloomemoofsubmittal}[5] {
+    \begin{waterlooletter}
+    \section*{Memorandum} {
+    To:       #1 \\
+    From:     #2 \\
+    Date:     \today\\
+    Re:       Work Report: #3\\
+
+    \noindent\rule{14cm}{1.9pt}
+
+    #4
+
+    Sincerely,\\ \\
+    #5
+    }
+    \end{waterlooletter}
+    }
+
     \newenvironment{waterlooletter}{
     \begin{singlespace}}{
     \end{singlespace}
@@ -177,34 +255,6 @@
     \newpage
     }
 
-    \newcommand{\addchecklistappendix}{
-    Your report must:
-    \begin{itemize}
-    \item $\left[ Y \right]$ Include 4-6 pages of body content. Figures or tables that are included in the body are excluded in the 4-6 page count. (Example: 8 pages of content that includes a one-page figure and a half-page table counts as 6.5 pages of body content.)  Adherence to the 3Cs (clarity, conciseness, and coherence) will allow you to meet this page limit.
-    \item $\left[ Y  \right]$ Include at least one table (Place the table in the body of your report if you discuss it in detail; place the table in an appendix if your analysis refers to it only briefly.)
-    \item $\left[ Y  \right]$ Include at least one figure (Place the figure in the body of your report if you discuss it in detail; place the figure in an appendix if your analysis refers to it only briefly.)
-    \item $\left[ Y  \right]$ Use a 12-point serif font
-    \item $\left[ Y  \right]$ Be double-spaced
-    \item $\left[ Y \right]$ Be written in formal, standard English, with no contractions
-    \item $\left[ Y  \right]$ Be spell checked and proofread
-    \item $\left[ Y \right]$ Include pages numbered according to the conventions described in the Report Resources tab.
-    \end{itemize}
-    Your report must conform to the format and conventions described in the Report Resources page. You do not have to bind your report or include a front cover because you will submit your report to us online. Your report will include the following pages and sections:
-    \begin{itemize}
-    \item $\left[ Y \right]$ Title page
-    \item $\left[ Y \right]$ Letter of submittal (addressed to the PD 2 course instructor)
-    \item $\left[ Y \right]$ Table of contents
-    \item $\left[ Y \right]$ List of figures and tables, if appropriate (Figures or tables in an appendix should not be listed on the List of figures and tables; figures or tables elsewhere in your report are required to be on this list.)
-    \item $\left[ Y \right]$ Summary
-    \item $\left[ Y \right]$ Introduction
-    \item $\left[ Y \right]$ Body (that includes both an objective analytical component and a reflective component)
-    \item $\left[ Y \right]$ Conclusions (the section is "conclusions" as in "findings", not "conclusion")
-    \item $\left[ Y \right]$ Recommendations (specific, measurable, and attainable)
-    \item $\left[ Y \right]$ References
-    \item $\left[ Y \right]$ Appendices (you need at least one appendix which includes this checklist)
-    \end{itemize}
-    }
-
     \newcommand{\addanappendix}[2]{
     \tocsection{#1}
     #2
@@ -220,30 +270,13 @@
     \newcommand{\mytableofcontents} {
     \tableofcontents
     \newpage
-    \begin{center}
-    \tocsection{List of Tables and Figures}
-    \end{center}
-    \listoffigures
-    \newpage
-    }
 
-    \newcommand{\mySection}[2] {
-    \section{#1}
-    #2
-    }
-
-    \newcommand{\mySubSection}[2] {
-    \begin{addmargin}[1.5em]{0em}
-    \subsection{#1}
-    #2
-    \end{addmargin}
-    }
-
-    \newcommand{\mySubSubSection}[2] {
-    \begin{addmargin}[1.5em]{0em}
-    \subsubsection{#1}
-    #2
-    \end{addmargin}
+    % OPTIONAL
+    % \begin{center}
+    % \tocsection{List of Tables and Figures}
+    % \end{center}
+    % \listoffigures
+    % \newpage
     }
 
     \newcommand{\myFigure}[3] {
@@ -261,9 +294,6 @@
     \caption{#3}
     \end{table}
     }
-
-    \def\thesection{\arabic{section}.0 }
-    \def\thesubsection{\arabic{section}.\arabic{subsection}}
 
     \renewcommand{\contentsname} {
     \begin{center}
@@ -294,6 +324,3 @@
     }}
     {\end{list}\bigskip
     }
-
-
-

@@ -27,27 +27,44 @@
     {\myName \\ \myTerm \ \myProgram \\ ID \myIdNumber \\ \today}
 }
 
+% Memorandum of Submittal
+%   Write your memorandum of submittal below, the header, salutation,
+%   and signature (except the image) are done for you already
+\newcommand{\submittal} {
+  \waterloomemoofsubmittal
+    {\supervisorAddress}{\myName}{\myTitle}
+    {
+
+  	% Write your letter here
+
+    }
+    {
+     \scalebox{0.3}{\includegraphics{examplesignature.jpg}}
+    }
+}
+
 % Letter of Submittal
 %   Write your letter of submittal below, the header, salutation,
 %   and signature (except the image) are done for you already
-\newcommand{\letterofsubmittal} {
-  \waterlooletterofsubmittal
-    {\myAddress}{\myCity}{\myPostalCode}{\supervisorAddress}{\supervisorSalutation}{\myName}{\myIdNumber}
-    {
+%   Choose EITHER the waterloo memo of submittal or the letter of submittal
+% \newcommand{\submittal} {
+%   \waterlooletterofsubmittal
+%     {\myAddress}{\myCity}{\myPostalCode}{\supervisorAddress}{\supervisorSalutation}{\myName}{\myIdNumber}
+%     {
 
-    \lipsum[1] % remove this line
+%     \lipsum[1] % remove this line
 
-    % Write your letter here
+%     % Write your letter here
 
-    }
-    {
-    % Attach an image of your signature
-    % The first number is a scale factor
-    % (if you can't, just delete this and uncomment next line)
-     \scalebox{0.1}{\includegraphics{examplesignature.jpg}}
-    % \myName
-    }
-}
+%     }
+%     {
+%     % Attach an image of your signature
+%     % The first number is a scale factor
+%     % (if you can't, just delete this and uncomment next line)
+%      \scalebox{0.1}{\includegraphics{examplesignature.jpg}}
+%     % \myName
+%     }
+% }
 
 % Table of Contents
 %   The table of contents will be generated for you
@@ -74,7 +91,7 @@
   \renewcommand{\headrulewidth}{0pt}
   \rfoot{\thepage}
   \pagenumbering{arabic}
-  \mySection{Introduction}
+  \section{Introduction}
   {
 
   \lipsum[8-9] % remove this line
@@ -88,9 +105,9 @@
 % Analysis (body)
 %   Write the body of your report here
 %   Section Headers:
-%     \mySection{ title }{ ... } will create a new section block
-%     \mySubSection{ title }{ ... } will create a new subsection block
-%     \mySubSubSection{ title }{ ... } will create a new subsubsection block
+%     \section{ title }{ ... } will create a new section block
+%     \subsection{ title }{ ... } will create a new subsection block
+%     \subsubsection{ title }{ ... } will create a new subsubsection block
 %   Bullet Points:
 %     \bulletpoints{
 %        \item bullet point 1
@@ -108,15 +125,15 @@
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%% This is an example, remove this entire block %%%%%%%%%
-  \mySection{My Amazing Section}{
+  \section{My Amazing Section}{
     \lipsum[2]
-    \mySubSection{My Amazing SubSection} {
+    \mysubsection{My Amazing SubSection} {
       \lipsum[12]
       \bulletpoints{
       \item first item
       \item second item
       }
-      \mySubSubSection{My Amazing SubSubSection} {
+      \mysubsubsection{My Amazing SubSubSection} {
         \lipsum[10]
         \myFigure{0.10}{examplefigure.jpg}{Hello, World}
         \lipsum[11-12]
@@ -124,11 +141,11 @@
       }
     }
   }
-  \mySection{My Amazing Section}{
+  \section{My Amazing Section}{
     \lipsum[2]
-    \mySubSection{My Amazing SubSection} {
+    \mysubsection{My Amazing SubSection} {
       \lipsum[12]
-      \mySubSubSection{My Amazing SubSubSection} {
+      \mysubsubsection{My Amazing SubSubSection} {
         \lipsum[18-21]
       }
     }
